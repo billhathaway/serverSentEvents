@@ -3,6 +3,8 @@ Note that the package name is "sse".
 
 For details see: http://en.wikipedia.org/wiki/Server-sent_events  
 
+[![GoDoc](https://godoc.org/github.com/billhathaway/serverSentEvents?status.png)](https://godoc.org/github.com/billhathaway/serverSentEvents)  
+
     package main
 
     import "fmt"

@@ -1,6 +1,7 @@
-// Package sse handles Server Sent Events
-// See http://www.w3.org/TR/eventsource/#the-eventsource-interface
-// TODO: handle various retry logic better
+// Package sse handles Server Sent Events  
+// See http://www.w3.org/TR/eventsource/#the-eventsource-interface  
+
+// TODO: handle various retry logic better  
 package sse
 
 import (

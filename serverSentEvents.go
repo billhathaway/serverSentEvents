@@ -1,7 +1,9 @@
 // Package sse handles Server Sent Events  
 // See http://www.w3.org/TR/eventsource/#the-eventsource-interface  
 
-// TODO: handle various retry logic better  
+// TODO: handle various retry scenarious better.  Retries currently happen when invalid HTTP status codes are returned,
+// but should be tried during various types of network/DNS errors occur.
+
 package sse
 
 import (
@@ -33,6 +35,7 @@ var (
 
 	// MaxBadLines indicates the number of illegal lines returned that cause the connection to error out
 	MaxBadLines = 10
+
 	// MaxRetries is the number of bad HTTP responses in a row we can get before we give up
 	MaxRetries = 3
 
@@ -48,11 +51,13 @@ type (
 		badLines             int
 		lastID               string
 		reconnectionInterval time.Duration
+		// C is the channel Events are sent back to
 		C                    chan Event
 		retries              int
 	}
 )
 
+// TODO: I think we need to send a sparse error event when retrying
 func (l *Listener) getStream() (*http.Response, error) {
 	for {
 		response, err := l.client.Do(l.request)

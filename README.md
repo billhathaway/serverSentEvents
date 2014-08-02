@@ -1,4 +1,5 @@
 This package implements a library to receive Server Sent Events.  
+Note that the package name is "sse".  
 
 For details see: http://en.wikipedia.org/wiki/Server-sent_events  
 
